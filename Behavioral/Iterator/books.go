@@ -26,14 +26,26 @@ type Library struct {
 	Collection []Book
 }
 
-// TODO: IterateBooks calls the given callback function
+// IterateBooks calls the given callback function 
 // for each book in the collection
 func (l *Library) IterateBooks(f func(Book) error) {
-	// TODO: implement IterateBooks
+	var err error
+	for _, b := range l.Collection {
+		err = f(b)
+		if err != nil {
+			fmt.Println("Error encountered:", err)
+			break
+		}
+	}
 }
 
-// TODO: createIterator returns a BookIterator that can access the book
+// createIterator returns a BookIterator that can access the book
 // collection on demand
+func (l *Library) createIterator() iterator {
+	return &BookIterator{
+		books: l.Collection,
+	}
+}
 
 // -------------------
 // Create a Library structure to hold a set of Books
