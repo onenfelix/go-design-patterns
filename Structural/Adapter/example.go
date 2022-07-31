@@ -15,10 +15,27 @@ func main() {
 		isOn:    true,
 	}
 
-	// TODO: Because the SohneeTV implements the "television" interface, we don't need an adapter
+	// Because the SohneeTV implements the "television" interface, we don't need an adapter
+	tv2.turnOn()
+	tv2.volumeUp()
+	tv2.volumeDown()
+	tv2.channelUp()
+	tv2.channelDown()
+	tv2.goToChannel(68)
+	tv2.turnOff()
 
 	fmt.Println("--------------------")
 
-	// TODO: We need to create a SammysangTV adapter for the SammysangTV class, however
+	// We need to create a SammysangTV adapter for the SammysangTV class, however
 	// because it has an interface that's different from the one we want to use
+	ssAdapt := &sammysangAdapter{
+		sstv: tv1,
+	}
+	ssAdapt.turnOn()
+	ssAdapt.volumeUp()
+	ssAdapt.volumeDown()
+	ssAdapt.channelUp()
+	ssAdapt.channelDown()
+	ssAdapt.goToChannel(68)
+	ssAdapt.turnOff()
 }
