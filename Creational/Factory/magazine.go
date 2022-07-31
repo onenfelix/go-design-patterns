@@ -12,7 +12,12 @@ func (m magazine) String() string {
 	return fmt.Sprintf("This is a magazine named %s", m.name)
 }
 
-// the createMagazine function returns a new Magazine object
 func createMagazine(name string, pages int, publisher string) iPublication {
-
+	return &magazine{
+		publication: publication{
+			name:      name,
+			pages:     pages,
+			publisher: publisher,
+		},
+	}
 }

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	log := getLoggerInstance()
 
@@ -14,6 +16,11 @@ func main() {
 	log.SetLogLevel(3)
 	log.Log("This is a log message")
 
-	// TODO: create several goroutines that try to get the
+	// create several goroutines that try to get the
 	// logger instance concurrently
+	for i := 1; i < 10; i++ {
+		go getLoggerInstance()
+	}
+	// wait for input before exiting
+	fmt.Scanln()
 }

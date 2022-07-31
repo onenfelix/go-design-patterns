@@ -1,10 +1,21 @@
 package main
 
+import "fmt"
+
 func main() {
-	// TODO: Create a NotificationBuilder and use it to set properties
+	var bldr = newNotificationBuilder()
+	bldr.SetTitle("New Notification")
+	bldr.SetIcon("icon.png")
+	bldr.SetSubTitle("This is a subtitle")
+	bldr.SetImage("image.jpg")
+	bldr.SetPriority(5)
+	bldr.SetMessage("This is a basic notification")
+	bldr.SetType("alert")
 
-	// TODO: Use the builder to set some properties
-
-	// TODO: Use the Build function to create a finished object
-
+	notif, _ := bldr.Build()
+	if err != nil {
+		fmt.Println("Error creating the notification:", err)
+	} else {
+		fmt.Printf("Notification: %+v\n", notif)
+	}
 }
